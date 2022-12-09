@@ -8,10 +8,7 @@ import PartsInput from '../../parts/PartsInput'
 import PartsButton from '../../parts/PartsButton'
 import PartsButtonWrap from '../../parts/PartsButtonWrap'
 
-import { isDev } from '../../../config/config'
-
 const Login: React.FC = React.memo(() => {
-  const [email, setEmail] = useState('')
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [isLoginError, setIsLoginError] = useState(false)
@@ -63,23 +60,12 @@ const Login: React.FC = React.memo(() => {
         <p className="title">ログイン認証</p>
         <form onSubmit={(e) => {e.preventDefault()}}>
           <dl>
-            <dt>メールアドレス</dt>
-            <dd>
-              <PartsInput
-                type="email"
-                value={email}
-                placeholder="example@test.com"
-                setState={setEmail}
-              />
-            </dd>
-          </dl>
-          <dl>
             <dt>ユーザー名</dt>
             <dd>
               <PartsInput
                 type="text"
                 value={userName}
-                placeholder="user"
+                placeholder="user-name"
                 setState={setUserName}
               />
             </dd>
@@ -108,11 +94,6 @@ const Login: React.FC = React.memo(() => {
           </PartsButtonWrap>
         </form>
 
-        {isDev ?
-          <div className="dev">
-            <p>新規アカウント作成ページへ遷移</p>
-          </div>
-        : null}
       </div>
     </StyledDiv>
   )
