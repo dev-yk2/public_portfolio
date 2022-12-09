@@ -11,7 +11,7 @@ type Props = {
   memoData: TypeMemoItem[]
   editMemoItem: TypeMemoItem
   setEditMemoItem: React.Dispatch<React.SetStateAction<TypeMemoItem>>
-  editType: string
+  editType: '' | 'add' | 'update'
   cancelMemoEdit: () => void
   completeMemoAdd: () => void
   completeMemoUpdate: () => void
@@ -101,16 +101,22 @@ const MemoEditor: React.FC<Props> = (props) => {
               onChange={(e) => {updateEditMemoItemOrder(e)}}
             >
               {
-                props.memoData.map((value, index) => {
-                  return (
-                    <option
-                      value={value.memo_order}
-                      key={index}
-                    >
-                      {value.memo_order + 1}
-                    </option>
-                  )
-                })
+                (() => {
+                  // 新規追加'add'の場合は、既存のメモ数＋1をメモ総数として順番を決める。
+                  const memoDataLength = props.editType === 'add' ? props.memoData.length + 1 : props.memoData.length
+                  const elem: JSX.Element[] = []
+                  for (let i = 0; i < memoDataLength; i++) {
+                    elem.push(
+                      <option
+                        value={i}
+                        key={i}
+                      >
+                        {i + 1}
+                      </option>
+                    )
+                  }
+                  return elem
+                })()
               }
             </select>
           </dd>
