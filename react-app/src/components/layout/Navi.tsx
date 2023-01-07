@@ -2,19 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 
+import { siteConfig } from '../config/siteConfig'
+
 const Navi: React.FC = React.memo(() => {
-  const naviList = [
-    {to: '/', name: 'Home'},
-    {to: '/world-clock-app/', name: 'WorldClockApp'},
-    {to: '/memo-app/', name: 'MemoApp'},
-    {to: '/generate-card-app/', name: 'GenerateCardApp'},
-  ]
   return (
     <StyledUl>
-      {naviList.map((v, i) => {
+      {siteConfig.pages.map((v, i) => {
+        if (!v.menuNavi) return null
         return (
           <li key={i}>
-            <NavLink to={v.to}>{v.name}</NavLink>
+            <NavLink to={v.path}>{v.title}</NavLink>
           </li>
         )
       })}
@@ -35,6 +32,7 @@ const StyledUl = styled.ul`
     a {
       display: block;
       padding: 0.4em 1em;
+      white-space: nowrap;
     }
   }
 `

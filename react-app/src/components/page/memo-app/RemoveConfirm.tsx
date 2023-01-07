@@ -44,7 +44,7 @@ const RemoveConfirm = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0, 0.8);
+  background-color: rgba(0,0,0, 0.9);
   .confirmInner {
     position: relative;
     padding: 1em 1.5em;

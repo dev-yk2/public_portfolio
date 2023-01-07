@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
+import Head from './Head'
 import Menu from './Menu'
 import Functions from './Functions'
 
@@ -10,11 +11,14 @@ type Props = {
 
 const Layout: React.FC<Props> = (props) => {
   return (
-    <StyledDiv>
-      <Functions />
-      <Menu />
-      {props.children}
-    </StyledDiv>
+    <>
+      <Head />
+      <StyledDiv>
+        <Functions />
+        <Menu />
+        {props.children}
+      </StyledDiv>
+    </>
   )
 }
 

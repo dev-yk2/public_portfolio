@@ -180,7 +180,7 @@ const StyledDiv = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0, 0.8);
+  background-color: rgba(0,0,0, 0.9);
   transition: opacity 0.3s;
   &.active {
     opacity: 1;
