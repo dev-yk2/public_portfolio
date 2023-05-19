@@ -1,0 +1,34 @@
+import * as Types from '../types'
+
+const putTag = async (
+  tagData: { id: number; name: string },
+  userId: number,
+): Promise<Types.Tag | Types.FetchError> => {
+  // console.log('[tagData]', tagData)
+  const res = await fetch(`/api/v0.2/myBooks/tag/${userId}/${tagData.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: tagData.name,
+    }),
+  })
+
+  // if (!res.ok) {
+  //   const errorRes = await res.json()
+  //   console.log('[errorRes]', errorRes)
+  //   const error = new Error(
+  //     errorRes.message ?? 'APIリクエスト中にエラーが発生しました。'
+  //   )
+  //   console.log('[error]', error)
+  //   throw error
+  // }
+
+  // const test = await res.json()
+  // console.log('[test]', test)
+
+  return res.json()
+}
+
+export default putTag
