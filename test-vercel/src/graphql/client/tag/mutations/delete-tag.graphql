@@ -1,0 +1,9 @@
+mutation DeleteTag($input: DeleteTagInput!) {
+  deleteTag(input: $input) {
+    tag {
+      id
+      name
+      userId
+    }
+  }
+}

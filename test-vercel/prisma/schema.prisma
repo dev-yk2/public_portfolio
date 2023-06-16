@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  firebaseAuthId String   @id @unique
+  email          String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  book           Book[]
+  tag            Tag[]
+}
+
+model Book {
+  id                  String                @id @default(uuid())
+  isbn                String
+  title               String
+  authors             String
+  publisher           String
+  memo                String
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+  user                User                  @relation(fields: [userId], references: [firebaseAuthId], onDelete: Cascade)
+  userId              String
+  bookTagRelationship BookTagRelationship[]
+}
+
+model Tag {
+  id                  String                @id @default(uuid())
+  name                String
+  user                User                  @relation(fields: [userId], references: [firebaseAuthId], onDelete: Cascade)
+  userId              String
+  bookTagRelationship BookTagRelationship[]
+}
+
+model BookTagRelationship {
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId String
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  tagId  String
+
+  @@id([bookId, tagId])
+}

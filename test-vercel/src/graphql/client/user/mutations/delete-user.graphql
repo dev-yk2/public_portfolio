@@ -1,0 +1,10 @@
+mutation DeleteUser($input: DeleteUserInput!) {
+  deleteUser(input: $input) {
+    user {
+      firebaseAuthId
+      email
+      createdAt
+      updatedAt
+    }
+  }
+}

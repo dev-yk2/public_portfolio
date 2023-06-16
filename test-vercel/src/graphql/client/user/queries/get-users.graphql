@@ -1,0 +1,10 @@
+query GetUsers {
+  getUsers {
+    users {
+      firebaseAuthId
+      email
+      createdAt
+      updatedAt
+    }
+  }
+}

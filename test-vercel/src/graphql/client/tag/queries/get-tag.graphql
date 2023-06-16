@@ -1,0 +1,9 @@
+query GetTag($input: GetTagInput!) {
+  getTag(input: $input) {
+    tag {
+      id
+      name
+      userId
+    }
+  }
+}

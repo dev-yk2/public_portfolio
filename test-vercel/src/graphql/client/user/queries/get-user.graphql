@@ -1,0 +1,10 @@
+query GetUser($input: GetUserInput!) {
+  getUser(input: $input) {
+    user {
+      firebaseAuthId
+      email
+      createdAt
+      updatedAt
+    }
+  }
+}

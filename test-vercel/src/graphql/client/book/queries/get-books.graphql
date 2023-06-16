@@ -1,0 +1,20 @@
+query GetBooks($input: GetBooksInput!) {
+  getBooks(input: $input) {
+    books {
+      id
+      isbn
+      title
+      authors
+      publisher
+      tags {
+        id
+        name
+        userId
+      }
+      memo
+      createdAt
+      updatedAt
+      userId
+    }
+  }
+}
