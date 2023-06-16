@@ -75,15 +75,6 @@ const Login: NextPage<Props> = ({ referer }) => {
     <Layout pageTitle="Login">
       <HeadCommon title="LogIn | App" description="ログインページです。" />
       <div className="overflow-auto h-[calc(100vh_-_var(--root-header-height)]">
-        {process.env.NODE_ENV === 'development' ? (
-          <div className="border border-red-500">
-            <p>email: devkatayama@gmail.com</p>
-            <p>password: hogehoge</p>
-            <hr />
-            <p>email: test-user@gmail.com</p>
-            <p>password: Sf7sUpyW</p>
-          </div>
-        ) : null}
         <div className="flex flex-col items-center">
           <SignInFormContainer
             containerTitle="ログイン"
